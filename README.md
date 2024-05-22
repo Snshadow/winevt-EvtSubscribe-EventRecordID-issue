@@ -1,6 +1,6 @@
 # winevt-EvtSubscribe-EventRecordID-issue
 
-Repository for reproducing issue of some event being skipped when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events).
+Repository for reproducing behavior of some event being skipped when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events).
 
 ## Requirement
 
@@ -33,7 +33,8 @@ _※ Event log cleared beforehand for testing._
 
 _Using push subscription method_
 
-![push method](https://imgur.com/a/IRbqAAI)
+![push method](https://i.imgur.com/GIeGgfb.png)
+_Screenshot of using push subscription method for Application channel_
 
 <details>
 <summary>Getting events using Get-EventLog from powershell</summary>
@@ -141,9 +142,10 @@ Index EntryType Source      Message
 ```
 </details>
 
-_Using subscription pull method_
+_Using subscription pull method for Application channel_
 
-![pull method](https://imgur.com/a/jHcKVdY)
+![pull method](https://i.imgur.com/SJyWnOt.png)
+_Screenshot of using pull subscription method for Application channel_
 
 <details>
 <summary>Getting events using Get-EventLog from powershell</summary>
