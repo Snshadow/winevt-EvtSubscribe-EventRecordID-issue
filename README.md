@@ -1,6 +1,6 @@
 # winevt-EvtSubscribe-EventRecordID-issue
 
-Repository for reproducing behavior of some event being skipped when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events).
+Repository for reproducing behavior of some event being skipped when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events) using __push subscription model__ and __pull subscription model__ presented in the page.
 
 ## Requirement
 
@@ -14,6 +14,8 @@ Visual Studio 2017 or later required to compile program.
 
 ## Details
 
+__Tested from Windows 10 22H2 64bit and Windows 11 22H2 using both 32 bit and 64 bit compiled programs.__
+
 The compiled program can be used like
 
 ```cmd
@@ -26,10 +28,11 @@ When running the program like this
 winevt_subscribe.exe "Application" "Event/System[EventRecordID>8000]"
 ```
 
-some events skipped while printing the events(discontinuous EventRecordID). 
-
 _※ Event log cleared beforehand for testing._
 
+### Skipped Events
+
+some events skipped while printing the events(discontinuous EventRecordID). 
 
 _Using push subscription method_
 
@@ -364,4 +367,18 @@ Index EntryType Source      Message
  8854     Error EventCreate test event log
  8853     Error EventCreate test event log
 ```
+
 </details>
+
+### EventRecordID query criteria not being applied when using push method
+
+Using pull subscription method(using event object with EvtNext) works correctly get the event that match the query criteria.
+
+___
+
+When using push subscription method(using EVT_SUBSCRIBE_CALLBACK), existing events are correctly filtered.
+
+However, future events that does match the query criteria are not filtered and printed to console.
+
+![push event query issue](https://i.imgur.com/UhF1TRX.png)
+_Screenshot of event not match query criteria being printed when using push subscription method_
