@@ -382,3 +382,15 @@ However, future events that does match the query criteria are not filtered and p
 
 ![push event query issue](https://i.imgur.com/UhF1TRX.png)
 _Screenshot of event not match query criteria being printed when using push subscription method_
+
+_source code in push_event.cpp_
+
+```cpp
+// Subscribe to events beginning with the oldest event in the channel. The subscription
+// will return all current events in the channel and any future events that are raised
+// while the application is active.
+hSubscription = EvtSubscribe(NULL, NULL, pwsPath, pwsQuery, NULL, NULL,
+    (EVT_SUBSCRIBE_CALLBACK)SubscriptionCallback, EvtSubscribeStartAtOldestRecord);
+```
+
+According to the document explaining about [EVT_SUBSCRIBE_FLAGS](https://learn.microsoft.com/en-us/windows/win32/api/winevt/ne-winevt-evt_subscribe_flags), using EvtSubscribeStartAtOldestRecord for EvtSubscribe should only subscribe to event that match the query criteria.
