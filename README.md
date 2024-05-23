@@ -372,7 +372,7 @@ Index EntryType Source      Message
 
 ### EventRecordID query criteria not being applied when using push method
 
-Using pull subscription method(using event object with EvtNext) works correctly get the event that match the query criteria.
+Using pull subscription method(using event object with EvtNext) works correctly getting the event that match the query criteria.
 
 ___
 
