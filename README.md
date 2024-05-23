@@ -1,6 +1,6 @@
 # winevt-EvtSubscribe-EventRecordID-issues
 
-Repository for reproducing behavior of some event being skipped when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events) using __push subscription model__ and __pull subscription model__ presented in the page.
+Repository for reproducing some strange behaviors when using [EvtSubscribe](https://learn.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe) with [EventRecordID](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-eventrecordid-systempropertiestype-element). Source code referenced from [Subscribing to Events](https://learn.microsoft.com/en-us/windows/win32/wes/subscribing-to-events) using __push subscription model__ and __pull subscription model__ presented in the page.
 
 ## Requirement
 
